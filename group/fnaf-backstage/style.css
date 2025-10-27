@@ -24,6 +24,40 @@ body {
   transition: background 0.3s, color 0.3s;
 }
 
+/* --- Fix dropdown menus overlapping with banner --- */
+
+/* Prevent banner blur from clipping dropdowns */
+.group-banner {
+  position: relative;
+  z-index: 1;
+  overflow: visible;
+}
+
+/* Ensure the search and role filter area sits above the banner */
+.controls {
+  position: relative;
+  z-index: 10;
+}
+
+/* Make sure dropdown lists appear on top of everything */
+#roleFilter,
+#searchBox {
+  position: relative;
+  z-index: 15;
+}
+
+/* Optional: make them look good in both light & dark mode */
+select, input[type="text"] {
+  background: var(--card-bg);
+  color: var(--text);
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 8px 10px;
+  outline: none;
+  transition: background 0.3s, color 0.3s;
+}
+
+
 header.sticky {
   position: fixed;
   top: 0;
