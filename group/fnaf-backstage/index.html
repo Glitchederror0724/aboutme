@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roblox Group Hub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="sticky">
+    <div class="group-banner" id="groupBanner"></div>
+    <div class="header-top">
+      <img id="groupIcon" class="group-icon" src="" alt="Group Icon" />
+      <div>
+        <h1 id="groupName">Loading group...</h1>
+        <p id="groupDesc">Please wait while we fetch your group info.</p>
+        <a id="viewGroupBtn" href="#" target="_blank" class="view-btn">View on Roblox</a>
+      </div>
+      <button id="themeToggle">🌙</button>
+    </div>
+  </header>
+
+  <div class="loader" id="loader"></div>
+
+  <section class="collapsible shout">
+    <button class="collapse-btn">📢 Group Shout</button>
+    <div class="content">
+      <p id="groupShout">Fetching shout...</p>
+    </div>
+  </section>
+
+  <section class="collapsible members">
+    <button class="collapse-btn">👥 Group Members</button>
+    <div class="content">
+      <div class="controls">
+        <input id="searchBox" type="text" placeholder="🔎 Search member by name..." />
+        <select id="roleFilter">
+          <option value="all">All Roles</option>
+        </select>
+      </div>
+      <div id="memberList" class="member-grid">
+        <p>Loading members...</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Powered by Roblox Public API | Hosted on GitHub Pages</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
