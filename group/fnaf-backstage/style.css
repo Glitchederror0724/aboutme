@@ -24,6 +24,52 @@ body {
   transition: background 0.3s, color 0.3s;
 }
 
+/* --- Banner blur & dropdown layering fix --- */
+.group-banner {
+  position: relative;
+  z-index: 1;
+  overflow: visible;
+  background: none;
+  height: 120px;
+  border-radius: 0 0 10px 10px;
+}
+
+/* Inner blurred gradient layer */
+.banner-blur {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  background-size: cover;
+  background-position: center;
+  filter: blur(2px) brightness(0.8);
+  border-radius: 0 0 10px 10px;
+  z-index: 1;
+}
+
+/* Fix dropdown overlap */
+.controls {
+  position: relative;
+  z-index: 50;
+}
+
+#roleFilter,
+#searchBox {
+  position: relative;
+  z-index: 100;
+}
+
+/* Optional: dark/light theme input style */
+select,
+input[type="text"] {
+  background: var(--card-bg);
+  color: var(--text);
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 8px 10px;
+  outline: none;
+  transition: background 0.3s, color 0.3s;
+}
+
 /* --- Fix dropdown menus overlapping with banner --- */
 
 /* Prevent banner blur from clipping dropdowns */
