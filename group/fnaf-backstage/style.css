@@ -326,3 +326,33 @@ footer {
   #themeToggle { width: 34px; height: 34px; }
   #searchBox, #roleFilter { width: 90%; }
 }
+
+/* --- Fix dropdown menus clipping into header/banner --- */
+
+/* Ensure header and banner layers behave correctly */
+header.sticky {
+  position: relative;
+  z-index: 5;
+}
+
+/* The banner background sits behind content */
+.group-banner,
+header::before,
+header::after {
+  z-index: 1;
+}
+
+/* Force collapsible areas to appear above banner */
+.collapsible,
+.controls {
+  position: relative;
+  z-index: 20;
+}
+
+/* The dropdown/select element always on top */
+#roleFilter,
+#searchBox,
+select {
+  position: relative;
+  z-index: 30;
+}
