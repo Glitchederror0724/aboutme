@@ -101,6 +101,41 @@ document.addEventListener("DOMContentLoaded", () => {
       memberList.appendChild(card);
     });
   }
+  // === Load Group Games ===
+const groupId = 36086667; // Your Roblox group ID
+const gameGrid = document.getElementById("gameGrid");
+const gamesLoader = document.getElementById("gamesLoader");
+
+async function loadGroupGames() {
+  try {
+    gamesLoader.style.display = "block";
+    const res = await fetch(`https://games.roblox.com/v2/groups/${groupId}/games?accessFilter=Public&limit=12`);
+    const data = await res.json();
+    gamesLoader.style.display = "none";
+
+    if (!data.data || data.data.length === 0) {
+      gameGrid.innerHTML = "<p>No public games found for this group.</p>";
+      return;
+    }
+
+    gameGrid.innerHTML = data.data.map(game => `
+      <div class="game-card">
+        <img src="https://www.roblox.com/asset-thumbnail/image?assetId=${game.rootPlaceId}&width=420&height=420&format=png" alt="${game.name}">
+        <h4>${game.name}</h4>
+        <p>👍 ${game.votes?.upVotes || 0} | 👁️ ${game.visits?.toLocaleString() || 0}</p>
+        <a href="https://www.roblox.com/games/${game.rootPlaceId}" target="_blank" class="view-btn">Play</a>
+      </div>
+    `).join("");
+  } catch (err) {
+    console.error("Error loading group games:", err);
+    gamesLoader.style.display = "none";
+    gameGrid.innerHTML = "<p>Failed to load group games.</p>";
+  }
+}
+
+// Load games automatically on page load
+window.addEventListener("DOMContentLoaded", loadGroupGames);
+
 
   function applyFilters() {
     const search = document.getElementById("searchBox").value.toLowerCase();
